@@ -1,0 +1,37 @@
+table pokemon_complete_stats
+	lineageTag: 879a7d35-f22b-4518-bbce-aae674c56037
+
+	column type_1
+		dataType: string
+		lineageTag: bd5582f3-8c9a-489c-a16a-6a6d305b6520
+		summarizeBy: none
+		sourceColumn: type_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: int64
+		formatString: 0
+		lineageTag: 2af7afd3-f19a-47e5-aebf-999580a8b849
+		summarizeBy: sum
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pokemon_complete_stats = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\UNO\Downloads\pokemon datasets\pokemon_complete_stats.csv"),[Delimiter=",", Columns=20, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"id", Int64.Type}, {"name", type text}, {"height_dm", Int64.Type}, {"weight_hg", Int64.Type}, {"base_experience", Int64.Type}, {"type_1", type text}, {"type_2", type text}, {"hp", Int64.Type}, {"attack", Int64.Type}, {"defense", Int64.Type}, {"special_attack", Int64.Type}, {"special_defense", Int64.Type}, {"speed", Int64.Type}, {"abilities", type text}, {"generation", type text}, {"is_legendary", type logical}, {"is_mythical", type logical}, {"color", type text}, {"shape", type text}, {"capture_rate", Int64.Type}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Changed Type",{{"name", Text.Proper, type text}, {"type_1", Text.Proper, type text}, {"type_2", Text.Proper, type text}, {"color", Text.Proper, type text}, {"shape", Text.Proper, type text}, {"abilities", Text.Proper, type text}, {"generation", Text.Proper, type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Capitalized Each Word","","n\a",Replacer.ReplaceValue,{"type_2"}),
+				    #"Grouped Rows" = Table.Group(#"Replaced Value", {"type_1"}, {{"type", each Table.RowCount(_), Int64.Type}})
+				in
+				    #"Grouped Rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

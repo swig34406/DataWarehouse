@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "13b6d18c4ab3ca95037d",
+  "position": {
+    "x": 150.23737571800964,
+    "y": 73.701354125816053,
+    "z": 1,
+    "height": 927,
+    "width": 1621,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pokemon_complete_stats"
+                    }
+                  },
+                  "Property": "type_1"
+                }
+              },
+              "queryRef": "pokemon_complete_stats.type_1",
+              "nativeQueryRef": "type_1",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pokemon_complete_stats"
+                        }
+                      },
+                      "Property": "type"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(pokemon_complete_stats.type)",
+              "nativeQueryRef": "Sum of type"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "pokemon_complete_stats"
+                      }
+                    },
+                    "Property": "type"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "573c491fa395b0494b76",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "pokemon_complete_stats"
+              }
+            },
+            "Property": "type_1"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0666039f96b2caa569cb",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "pokemon_complete_stats"
+                  }
+                },
+                "Property": "type"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
