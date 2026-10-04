@@ -18,29 +18,29 @@ The queries cover beginner to advanced SQL concepts and can be used for learning
 
 🛠️ SQL Concepts Covered
 
-SELECT statements
-WHERE and filtering
-ORDER BY
-GROUP BY
-Aggregate functions (COUNT, SUM, AVG, MIN, MAX)
-HAVING
-DISTINCT
-LIKE, IN, BETWEEN
-CASE statements
-INNER JOIN
-LEFT JOIN
-RIGHT JOIN
-FULL OUTER JOIN
-Self Joins
-Subqueries
-Common Table Expressions (CTEs)
-Window Functions
-UNION and UNION ALL
-Date and string functions
-INSERT, UPDATE, and DELETE
-Primary and foreign keys
-Constraints
-Data cleaning and transformation
+SELECT statements,
+WHERE and filtering,
+ORDER BY,
+GROUP BY,
+Aggregate functions (COUNT, SUM, AVG, MIN, MAX),
+HAVING,
+DISTINCT,
+LIKE, IN, BETWEEN,
+CASE statements,
+INNER JOIN,
+LEFT JOIN,
+RIGHT JOIN,
+FULL OUTER JOIN,
+Self Joins,
+Subqueries,
+Common Table Expressions (CTEs),
+Window Functions,
+UNION and UNION ALL,
+Date and string functions,
+INSERT, UPDATE, and DELETE,
+Primary and foreign keys,
+Constraints,
+Data cleaning and transformation,
 
 🎯 Project Goals
 
